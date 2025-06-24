@@ -200,7 +200,6 @@
     document.getElementById("alarmPopup").style.display = "none";
   }
 
-  // ========== ALARM ==========
   let alarms = [];
   let currentAlarm = null;
 
@@ -266,7 +265,7 @@
     currentAlarm = null;
   }
 
-  // ========== POMODORO ==========
+  // POMODORO
   let pomodoroSeconds = 1500;
   let pomodoroTimer = null;
   let isRunning = false;
@@ -305,8 +304,11 @@
         audio.play().catch(err => console.error("Audio play error:", err));
 
         alert(onBreak ? "Break Time! ☕" : "Focus Time! 🔥");
-        if (!onBreak) document.getElementById("lockScreen").classList.add("active");
-        else document.getElementById("lockScreen").classList.remove("active");
+        if (!onBreak) {
+          document.getElementById("lockScreen").classList.add("active");
+        } else {
+          document.getElementById("lockScreen").classList.remove("active");
+        }
       }
     }, 1000);
   }
@@ -330,7 +332,6 @@
     document.getElementById("lockTime").textContent = `${min}:${sec}`;
   }
 
-  // Start at home screen
   goHome();
 </script>
 
