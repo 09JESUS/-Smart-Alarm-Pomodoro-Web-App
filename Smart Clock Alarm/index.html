@@ -239,7 +239,6 @@
         audio.loop = true;
         audio.volume = 1;
         audio.play().catch(err => console.error("Audio play error:", err));
-
         document.getElementById("alarmTitle").textContent = `🔔 ${alarm.label}`;
         document.getElementById("alarmPopup").style.display = "block";
         currentAlarm = { ...alarm };
@@ -299,9 +298,12 @@
         onBreak = !onBreak;
         pomodoroSeconds = (onBreak ? breakMinutes : focusMinutes) * 60;
         updatePomodoroDisplay();
+
+        const sound = document.getElementById("alarmSoundSelect").value;
         const audio = document.getElementById("alarmSound");
-        audio.src = "/static/audio/annoying_clock.mp3";
-        audio.play();
+        audio.src = `/static/audio/${sound}`;
+        audio.play().catch(err => console.error("Audio play error:", err));
+
         alert(onBreak ? "Break Time! ☕" : "Focus Time! 🔥");
         if (!onBreak) document.getElementById("lockScreen").classList.add("active");
         else document.getElementById("lockScreen").classList.remove("active");
