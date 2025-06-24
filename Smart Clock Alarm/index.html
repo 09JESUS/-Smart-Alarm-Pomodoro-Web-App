@@ -300,7 +300,7 @@
         pomodoroSeconds = (onBreak ? breakMinutes : focusMinutes) * 60;
         updatePomodoroDisplay();
         const audio = document.getElementById("alarmSound");
-        audio.src = "/static/audio/alarm1.mp3";
+        audio.src = "/static/audio/annoying_clock.mp3";
         audio.play();
         alert(onBreak ? "Break Time! ☕" : "Focus Time! 🔥");
         if (!onBreak) document.getElementById("lockScreen").classList.add("active");
